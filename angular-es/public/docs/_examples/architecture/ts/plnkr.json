@@ -1,0 +1,8 @@
+{
+  "description": "Intro to Angular",
+  "files":[
+    "!**/*.d.ts",
+    "!**/*.js",
+    "!app/hero-list.component.1.*"
+  ]
+}

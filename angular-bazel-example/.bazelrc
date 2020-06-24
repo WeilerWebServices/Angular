@@ -1,0 +1,76 @@
+# Make TypeScript and Angular compilation fast, by keeping a few copies of the
+# compiler running as daemons, and cache SourceFile AST's to reduce parse time.
+build --strategy=TypeScriptCompile=worker
+build --strategy=AngularTemplateCompile=worker
+
+# Don't create bazel-* symlinks in the WORKSPACE directory.
+# These require .gitignore and may scare users.
+# Also, it's a workaround for https://github.com/bazelbuild/rules_typescript/issues/12
+# which affects the common case of having `tsconfig.json` in the WORKSPACE directory.
+#
+# Instead, you should run `bazel info bazel-bin` to find out where the outputs went.
+build --symlink_prefix=dist/
+
+test --test_output=errors
+
+# Use the Angular 6 compiler
+build --define=compile=legacy
+
+# Turn off legacy external runfiles
+run --nolegacy_external_runfiles
+test --nolegacy_external_runfiles
+
+# Turn on --incompatible_strict_action_env which was on by default
+# in Bazel 0.21.0 but turned off again in 0.22.0. Follow
+# https://github.com/bazelbuild/bazel/issues/7026 for more details.
+# This flag is needed to so that the bazel cache is not invalidated
+# when running bazel via `yarn bazel`.
+# See https://github.com/angular/angular/issues/27514.
+build --incompatible_strict_action_env
+run --incompatible_strict_action_env
+test --incompatible_strict_action_env
+
+# Turn on managed directories feature in Bazel
+# This allows us to avoid installing a second copy of node_modules
+build --experimental_allow_incremental_repository_updates
+query --experimental_allow_incremental_repository_updates
+
+###############################
+# Remote Build Execution support
+# Turn on these settings with
+#  --config=remote
+###############################
+
+# Load default settings for Remote Build Execution
+# When updating, the URLs of bazel_toolchains in packages/bazel/package.bzl
+# may also need to be updated (see https://github.com/angular/angular/pull/27935)
+import %workspace%/third_party/github.com/bazelbuild/bazel-toolchains/bazelrc/bazel-0.24.0.bazelrc
+
+# Point to our custom execution platform; see tools/BUILD.bazel
+build:remote --extra_execution_platforms=//tools:rbe_ubuntu1604-angular
+build:remote --host_platform=//tools:rbe_ubuntu1604-angular
+build:remote --platforms=//tools:rbe_ubuntu1604-angular
+
+# Remote instance.
+# rbe-shared-demo has 500 2-core workers
+# rbe-shared-demo2 has 100 8-core workers
+build:remote --remote_instance_name=projects/rbe-shared-demo2/instances/default_instance
+# Allow Bazel to consume all the workers
+build:remote --jobs=100
+
+# Schedule actions both locally and remote, take the faster one
+# See https://blog.bazel.build/2019/02/01/dynamic-spawn-scheduler.html
+# NB: this setting is experimental and can cause obscure build failures.
+# The Bazel team does not recommend using this in all projects.
+# We can observe failures like Remote connection/protocol failed
+# build:remote --experimental_spawn_scheduler
+
+##################################################
+# Load any settings specific to the current user.
+##################################################
+
+# Needs to be last statement in this
+# config, as the user configuration should be able to overwrite flags from this file.
+# To use Remote Build Execution, this file should contain a line like
+# build --google_credentials=[path to the .json credentials file]
+try-import .bazelrc.user

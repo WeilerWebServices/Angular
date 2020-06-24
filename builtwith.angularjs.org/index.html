@@ -1,0 +1,272 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <base href="/">
+  <meta name="Description"
+        content="Gallery of applications built with AngularJS">
+  <title>Built with AngularJS</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/docs.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/bwa.css">
+  <script>
+    /*!
+      * $script.js Async loader & dependency manager
+      * https://github.com/ded/script.js
+      * (c) Dustin Diaz, Jacob Thornton 2011
+      * License: MIT
+      */
+    (function(a,b){typeof module!="undefined"?module.exports=b():typeof define=="function"&&define.amd?define(a,b):this[a]=b()})("$script",function(){function q(a,b,c){for(c=0,j=a.length;c<j;++c)if(!b(a[c]))return k;return 1}function r(a,b){q(a,function(a){return!b(a)})}function s(a,b,i){function o(a){return a.call?a():d[a]}function p(){if(!--n){d[m]=1,k&&k();for(var a in f)q(a.split("|"),o)&&!r(f[a],o)&&(f[a]=[])}}a=a[l]?a:[a];var j=b&&b.call,k=j?b:i,m=j?a.join(""):b,n=a.length;return setTimeout(function(){r(a,function(a){if(h[a])return m&&(e[m]=1),h[a]==2&&p();h[a]=1,m&&(e[m]=1),t(!c.test(a)&&g?g+a+".js":a,p)})},0),s}function t(c,d){var e=a.createElement("script"),f=k;e.onload=e.onerror=e[p]=function(){if(e[n]&&!/^c|loade/.test(e[n])||f)return;e.onload=e[p]=null,f=1,h[c]=2,d()},e.async=1,e.src=c,b.insertBefore(e,b.firstChild)}var a=document,b=a.getElementsByTagName("head")[0],c=/^https?:\/\//,d={},e={},f={},g,h={},i="string",k=!1,l="push",m="DOMContentLoaded",n="readyState",o="addEventListener",p="onreadystatechange";return!a[n]&&a[o]&&(a[o](m,function u(){a.removeEventListener(m,u,k),a[n]="complete"},k),a[n]="loading"),s.get=t,s.order=function(a,b,c){(function d(e){e=a.shift(),a.length?s(e,d):s(e,b,c)})()},s.path=function(a){g=a},s.ready=function(a,b,c){a=a[l]?a:[a];var e=[];return!r(a,function(a){d[a]||e[l](a)})&&q(a,function(a){return d[a]})?b():!function(a){f[a]=f[a]||[],f[a][l](b),c&&c(e)}(a.join("|")),s},s})
+
+
+    var _gaq=[
+      ['_setAccount','UA-8594346-6'],
+      ['_setDomainName', '.angularjs.org'],
+      ['_trackPageview'],['_trackPageLoadTime']
+    ];
+
+    $script('https://apis.google.com/js/plusone.js');
+    $script(('https:'==location.protocol?'//ssl':'http://www')+'.google-analytics.com/ga.js');
+    $script("//platform.twitter.com/widgets.js");
+
+    $script('//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', function() {
+      $script(['//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js',
+               'js/bootstrap.min.js', 'js/bwa.js'], function() {
+        $().dropdown();
+        angular.bootstrap(document, ['bwaApp']);
+      });
+    });
+  </script>
+  <script>
+    /*
+    AngularJS v1.0.4
+    (c) 2010-2012 Google, Inc. http://angularjs.org
+    License: MIT
+    */
+    (function(i){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(i,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw Error("No module: "+b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"),
+      value:a("$provide","value"),constant:a("$provide","constant","unshift"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
+
+  </script>
+</head>
+<body ng-controller="BWAController">
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header class="header">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://angularjs.org/" style="padding-top: 6px; padding-bottom: 0px;">
+            <img class="AngularJS-small" src="img/AngularJS-small.png">
+          </a>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            <li class="active"><a href="http://angularjs.org/"><i class="icon-home icon-white"></i> Home</a></li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-eye-open icon-white"></i> Learn <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a href="http://angularjs.org/">Why AngularJS?</a></li>
+                <li><a href="http://www.youtube.com/user/angularjs">Watch</a></li>
+                <li><a href="http://docs.angularjs.org/tutorial">Tutorial</a></li>
+                <li><a href="http://builtwith.angularjs.org">Case Studies</a></li>
+                <li><a href="https://github.com/angular/angular-seed">Seed App project template</a></li>
+                <li><a href="http://docs.angularjs.org/misc/faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-book icon-white"></i> Develop <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="http://docs.angularjs.org/tutorial">Tutorial</a></li>
+                <li><a href="http://docs.angularjs.org/guide/">Developer Guide</a></li>
+                <li><a href="http://docs.angularjs.org/api/">API Reference</a></li>
+                <li><a href="http://docs.angularjs.org/misc/contribute">Contribute</a></li>
+                <li><a href="http://code.angularjs.org/">Download</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-comment icon-white"></i> Discuss <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="http://groups.google.com/group/angular">Mailing List</a></li>
+                <li><a href="http://webchat.freenode.net/?channels=angularjs&uio=d4">Chat Room</a></li>
+                <li class="divider"></li>
+                <li><a href="https://twitter.com/#!/angularjs">Twitter</a></li>
+                <li><a href="https://plus.google.com/110323587230527980117">Google+</a></li>
+                <li class="divider"></li>
+                <li><a href="https://github.com/angular/angular.js">GitHub</a></li>
+                <li><a href="https://github.com/angular/angular.js/issues">Issue Tracker</a></li>
+              </ul>
+            </li>
+            <li class="divider-vertical"></li>
+          </ul>
+          <form class="navbar-search pull-right" method="GET" action="https://www.google.com/search">
+            <input type="text" name="as_q" class="search-query" placeholder="Search">
+            <input type="hidden" name="as_sitesearch" value="angularjs.org">
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div role="main" class="container bwa-main-container">
+
+    <script type="text/ng-template" id="bwa-project.html">
+      <div ng-click="lightbox(project)">
+        <img alt="{{project && project.name + ' screenshot'}}" class="bwa-img" ng-src="{{project && 'projects/' + project.thumb}}">
+        <h2>{{project.name}}</h2>
+        <p class='bwa-project-desc'>{{project.desc}}</p>
+        <span class="label label-important bwa-label" ng-repeat="tag in project.tags" ng-click="addTag(tag)">{{tag}}</span>
+      </div>
+    </script>
+
+    <div class="row">
+      <div class="span12">
+        <div class="deprecation">
+          <strong>Closing Down!</strong><br>
+          This site is no longer maintained.<br>
+          The new site can be found at<br>
+          <a href="https://www.madewithangular.com/">www.madewithangular.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row first bwa-featured">
+      <div class="span8">
+        <bwa-project project="featured" lightbox="lightbox" class= "well bwa-project-well" add-tag="addTag"></bwa-project>
+      </div>
+      <div class="span4">
+        <div class="center">
+          <!-- TODO: make a properly sized image, remove style= hacks -->
+          <p class="bwa-neat">
+            <span class="badge badge-important bwa-count" ng-bind="projects.length || '?'">?</span> Neat things built with
+          <img class="AngularJS-large" src="img/AngularJS-large.png">
+          </p>
+        </div>
+        <div class="bwa-spacer"></div>
+        <hr>
+        <div class="bwa-spacer"></div>
+        <p>
+          Here we feature good examples of Angular apps and experiments.
+          Inspect, learn, and make your own!
+        </p>
+        <div class="center">
+          <a href="https://github.com/angular/builtwith.angularjs.org#submit">
+            <button class="btn-large btn-info">Submit your AngularJS app</button>
+          </a>
+        </div>
+
+        <div class="bwa-spacer"></div>
+        <hr>
+        <div class="bwa-spacer"></div>
+
+        <!-- Search -->
+        <form class="well">
+          <input type="text" class="input-large search-query" placeholder="Search" ng-model="query" ng-change="search()">
+
+          <div class="bwa-btn-tags">
+            <div class="btn-group bwa-btn-group">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                Tags
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li ng-show="tags.length == 0">
+                  <a href="#tag">No tags left!</a>
+                </li>
+                <li ng-repeat="tag in tags">
+                  <a href="#tag" ng-click="addTag()">{{tag}}</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- active tags -->
+            <span class="label label-important bwa-label" ng-repeat="tag in activeTags" ng-click="removeTag()" ng-cloak>
+              <span ng-bind="tag"></span> <i class="icon-remove-sign"></i>
+            </span>
+          </div>
+
+          <select ng-options="p.val as p.label for p in sortables" class="input-medium bwa-select-sort" ng-model="sortPrep" ng-change="search()"></select>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="spacer"></div>
+
+    <div class="row bwa-projects" ng-repeat="projectCol in pagedProjects[currentPage]">
+      <div class="span6" ng-repeat="project in projectCol">
+        <bwa-project project="project" lightbox="lightbox" add-tag="addTag" class= "well bwa-project-well"></bwa-project>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="pagination">
+        <ul>
+          <li ng-class="{disabled: currentPage == 0}">
+            <a href ng-click="prevPage()">« Prev</a>
+          </li>
+          <li ng-repeat="n in range(pagedProjects.length)"
+            ng-class="{active: n == currentPage}"
+            ng-click="setPage()">
+            <a href ng-bind="n + 1">1</a>
+          </li>
+          <li ng-class="{disabled: currentPage == pagedProjects.length - 1}">
+            <a href ng-click="nextPage()">Next »</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>Super-powered by Google  ©2010-2012</p>
+      <p>Code licensed under the
+        <a href="https://github.com/angular/angular.js/blob/master/LICENSE" target="_blank">The
+          MIT License</a>. Documentation licensed under <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+      </p>
+    </div>
+  </footer>
+
+  <div class="modal fade" ng-class="{in: lightbox()}">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="lightbox(false)">×</button>
+      <h2>{{lightbox().name}}</h2>
+    </div>
+    <div class="modal-body">
+      <a href="{{lightbox().url}}">
+        <img alt="{{lightbox() && lightbox().name + ' screenshot'}}" class="well" ng-src="{{lightbox() && 'projects/' + lightbox().thumb}}">
+      </a>
+      <p>{{lightbox().desc}}</p>
+      <p>
+        <span class="label label-info bwa-tag" ng-repeat="tag in lightbox().tags">{{tag}}</span>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="{{lightbox().url}}" class="btn btn-primary">Check out the App</a>
+      <a ng-show="lightbox().src" href="{{lightbox().src}}" class="btn">View the Source</a>
+      <a ng-show="lightbox().info" href="{{lightbox().info}}" class="btn">Read More</a>
+    </div>
+  </div>
+  <div class="modal-backdrop fade" ng-class="{in: lightbox()}" ng-click='lightbox(false)'></div>
+
+</body>
+</html>

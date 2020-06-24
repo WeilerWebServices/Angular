@@ -1,0 +1,17 @@
+{
+  "name": "@angular-devkit/build-optimizer",
+  "version": "0.0.0",
+  "description": "Angular Build Optimizer",
+  "experimental": true,
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
+  "bin": {
+    "build-optimizer": "./src/build-optimizer/cli.js"
+  },
+  "dependencies": {
+    "loader-utils": "2.0.0",
+    "source-map": "0.7.3",
+    "tslib": "2.0.0",
+    "webpack-sources": "1.4.3"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "name": "xi18n",
+  "description": "Extracts i18n messages from source code.",
+  "options": [
+    {
+      "name": "project",
+      "description": "The name of the project to build. Can be an application or a library.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "positional": 0
+    },
+    {
+      "name": "configuration",
+      "description": "A named build target, as specified in the \"configurations\" section of angular.json.\nEach named target is accompanied by a configuration of option defaults for that target.\nSetting this explicitly overrides the \"--prod\" flag",
+      "type": "string",
+      "required": false,
+      "aliases": [
+        "c"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "prod",
+      "description": "Shorthand for \"--configuration=production\".\nWhen true, sets the build configuration to the production target.\nBy default, the production target is set up in the workspace configuration such that all builds make use of bundling, limited tree-shaking, and also limited dead code elimination.",
+      "type": "boolean",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "help",
+      "description": "Shows a help message for this command in the console.",
+      "type": "boolean",
+      "types": [
+        "boolean",
+        "string"
+      ],
+      "default": false,
+      "enum": [
+        true,
+        false,
+        "json",
+        "JSON"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "browserTarget",
+      "description": "Target to extract from.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "format",
+      "description": "Output format for the generated file.",
+      "type": "string",
+      "default": "xlf",
+      "enum": [
+        "xmb",
+        "xlf",
+        "xlif",
+        "xliff",
+        "xlf2",
+        "xliff2"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "i18nFormat",
+      "description": "Output format for the generated file.",
+      "type": "string",
+      "default": "xlf",
+      "enum": [
+        "xmb",
+        "xlf",
+        "xlif",
+        "xliff",
+        "xlf2",
+        "xliff2"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "deprecated": "Use 'format' option instead."
+    },
+    {
+      "name": "i18nLocale",
+      "description": "Specifies the source language of the application.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "deprecated": "Use 'i18n' project level sub-option 'sourceLocale' instead."
+    },
+    {
+      "name": "progress",
+      "description": "Log progress to the console.",
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "outputPath",
+      "description": "Path where output will be placed.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "outFile",
+      "description": "Name of the file to output.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    }
+  ],
+  "aliases": [
+    "i18n-extract"
+  ],
+  "scope": "in",
+  "hidden": false
+}

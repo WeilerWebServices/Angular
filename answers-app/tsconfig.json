@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "outDir": "build",
+        "rootDir": "src",
+        "sourceMap": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "noResolve": false
+    },
+    "files": [
+      "typings/main.d.ts",
+      "src/worker/main_worker.ts",
+      "src/ui/main_ui.ts",
+      "src/main-server.ts",
+      "tasks/build.ts",
+      "tasks/compile.ts",
+      "tasks/copy.ts",
+      "tasks/styles.ts"
+    ]
+}

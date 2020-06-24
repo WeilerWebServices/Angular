@@ -1,0 +1,22 @@
+{
+  "name": "angular-ja",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/angular/angular-ja",
+  "author": "Suguru Inatomi <suguru.inatomi@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "npm run textlint",
+    "update-origin": "./update-origin.sh",
+    "textlint": "textlint 'aio-ja/**/!(*.en).md'",
+    "textlint:f": "textlint --fix 'aio-ja/**/!(*.en).md'"
+  },
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "prh-rules": "prh/rules",
+    "textlint": "^11.0.0",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-prh": "^5.0.1"
+  }
+}

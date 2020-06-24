@@ -1,0 +1,13 @@
+// This tsConfig file is used by editors and TypeScript’s language server to improve development experience.
+// Note: This should not be used to perform a compilation.
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/lib/tsconfig.spec.json"
+    }
+  ]
+}

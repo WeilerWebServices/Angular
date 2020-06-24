@@ -1,0 +1,38 @@
+{
+  "index": {
+    "title": "Tutorial: Guide des Héros",
+    "navTitle": "Introduction",
+    "intro": "Le Guide des Héros est un tutorial qui va nous permettre de créer pas à pas une application Angular en TypeScript.",
+    "nextable": true
+  },
+  "toh-pt1": {
+    "title": "Editer un héro",
+    "intro": "Nous allons construire un simple éditeur pour héros",
+    "nextable": true
+  },
+  "toh-pt2": {
+    "title": "Maître/Détail",
+    "intro": "Construisons une page maître/détail qui affiche une liste de super-héros",
+    "nextable": true
+  },
+  "toh-pt3": {
+    "title": "Plusieurs composants",
+    "intro": "Redécoupons la page principale en plusieurs composants",
+    "nextable": true
+  },
+  "toh-pt4": {
+    "title": "Services",
+    "intro": "Créons un service réutilisable pour administrer les données de nos héros ",
+    "nextable": true
+  },
+  "toh-pt5": {
+    "title": "Routage",
+    "intro": "Ajoutons le composant Router d'Angular et apprenons à naviguer entre nos vues",
+    "nextable": true
+  },
+  "toh-pt6": {
+    "title": "Http",
+    "intro": "Modifions nos services et composants afin de leur faire utiliser Http",
+    "nextable": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "angularjs.org",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "yarn && gulp && node scripts/build"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0",
+    "http-server": "*",
+    "protractor": "^5.4.2"
+  }
+}

@@ -1,0 +1,37 @@
+# The root-level component of the application
+entrypoint: Shell
+
+# "Shell" is both the name of component class and its element
+Shell:
+  template:
+    - Screen1:
+        # whether the node is guarded by a conditional
+        branch: if
+        # the number of property bindings on this node
+        props: 3
+    - Screen2:
+        branch: if
+        props: 1
+
+Screen1:
+  template:
+    # if node name begins with a capital letter, it's a nested component
+    - ScreenHeader:
+        props: 5
+    # if node name begins with a small letter, it's a plain HTML element
+    - div:
+        # how many text bindings, i.e. {{foo}}, the node contains
+        textBindings: 1
+
+Screen2:
+  template:
+    - ScreenHeader:
+        props: 5
+    - div:
+        branch:
+          repeat: 10
+
+ScreenHeader:
+  template:
+    - div:
+        repeat: 3

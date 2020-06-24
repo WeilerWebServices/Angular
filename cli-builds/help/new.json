@@ -1,0 +1,285 @@
+{
+  "name": "new",
+  "description": "Creates a new workspace and an initial Angular app.",
+  "longDescription": "Creates and initializes a new Angular app that is the default project for a new workspace.\n\nProvides interactive prompts for optional configuration, such as adding routing support.\nAll prompts can safely be allowed to default.\n\n* The new workspace folder is given the specified project name, and contains configuration files at the top level.\n\n* By default, the files for a new initial app (with the same name as the workspace) are placed in the `src/` subfolder. Corresponding end-to-end tests are placed in the `e2e/` subfolder.\n\n* The new app's configuration appears in the `projects` section of the `angular.json` workspace configuration file, under its project name.\n\n* Subsequent apps that you generate in the workspace reside in the `projects/` subfolder.\n\nIf you plan to have multiple apps in the workspace, you can create an empty workspace by setting the `--createApplication` option to false.\nYou can then use `ng generate application` to create an initial app.\nThis allows a workspace name different from the initial app name, and ensures that all apps reside in the `/projects` subfolder, matching the structure of the configuration file.",
+  "options": [
+    {
+      "name": "collection",
+      "description": "A collection of schematics to use in generating the initial app.",
+      "type": "string",
+      "required": false,
+      "aliases": [
+        "c"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "verbose",
+      "description": "When true, adds more details to output logging.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "v"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "help",
+      "description": "Shows a help message for this command in the console.",
+      "type": "boolean",
+      "types": [
+        "boolean",
+        "string"
+      ],
+      "default": false,
+      "enum": [
+        true,
+        false,
+        "json",
+        "JSON"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "dryRun",
+      "description": "When true, runs through and reports activity without writing out results.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "d"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "force",
+      "description": "When true, forces overwriting of existing files.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "f"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "interactive",
+      "description": "When false, disables interactive input prompts.",
+      "type": "boolean",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "defaults",
+      "description": "When true, disables interactive input prompts for options with a default.",
+      "type": "boolean",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "directory",
+      "description": "The directory name to create the workspace in.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "name",
+      "description": "The name of the new workspace and initial project.",
+      "type": "string",
+      "required": false,
+      "aliases": [],
+      "format": "html-selector",
+      "hidden": false,
+      "positional": 0
+    },
+    {
+      "name": "skipInstall",
+      "description": "When true, does not install dependency packages.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "skipGit",
+      "description": "When true, does not initialize a git repository.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "g"
+      ],
+      "hidden": false
+    },
+    {
+      "name": "commit",
+      "description": "Initial git repository commit information.",
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "newProjectRoot",
+      "description": "The path where new projects will be created, relative to the new workspace root.",
+      "type": "string",
+      "default": "projects",
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "inlineStyle",
+      "description": "When true, includes styles inline in the component TS file. By default, an external styles file is created and referenced in the component TS file.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "s"
+      ],
+      "hidden": false,
+      "userAnalytics": 9
+    },
+    {
+      "name": "inlineTemplate",
+      "description": "When true, includes template inline in the component TS file. By default, an external template file is created and referenced in the component TS file.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "t"
+      ],
+      "hidden": false,
+      "userAnalytics": 10
+    },
+    {
+      "name": "viewEncapsulation",
+      "description": "The view encapsulation strategy to use in the initial project.",
+      "type": "string",
+      "enum": [
+        "Emulated",
+        "Native",
+        "None",
+        "ShadowDom"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "userAnalytics": 11
+    },
+    {
+      "name": "routing",
+      "description": "When true, generates a routing module for the initial project.",
+      "type": "boolean",
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "userAnalytics": 17
+    },
+    {
+      "name": "prefix",
+      "description": "The prefix to apply to generated selectors for the initial project.",
+      "type": "string",
+      "default": "app",
+      "required": false,
+      "aliases": [
+        "p"
+      ],
+      "format": "html-selector",
+      "hidden": false
+    },
+    {
+      "name": "style",
+      "description": "The file extension or preprocessor to use for style files.",
+      "type": "string",
+      "enum": [
+        "css",
+        "scss",
+        "sass",
+        "less",
+        "styl"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "userAnalytics": 5
+    },
+    {
+      "name": "skipTests",
+      "description": "When true, does not generate \"spec.ts\" test files for the new project. ",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [
+        "S"
+      ],
+      "hidden": false,
+      "userAnalytics": 12
+    },
+    {
+      "name": "createApplication",
+      "description": "When true (the default), creates a new initial application project in the src folder of the new workspace. When false, creates an empty workspace with no initial app. You can then use the generate application command so that all apps are created in the projects folder.",
+      "type": "boolean",
+      "default": true,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "minimal",
+      "description": "When true, creates a workspace without any testing frameworks. (Use for learning purposes only.)",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [],
+      "hidden": false,
+      "userAnalytics": 14
+    },
+    {
+      "name": "strict",
+      "description": "Creates a workspace with stricter type checking and build optimization options.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "legacyBrowsers",
+      "description": "Add support for legacy browsers like Internet Explorer using differential loading.",
+      "type": "boolean",
+      "default": false,
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    },
+    {
+      "name": "packageManager",
+      "description": "The package manager used to install dependencies.",
+      "type": "string",
+      "enum": [
+        "npm",
+        "yarn",
+        "pnpm",
+        "cnpm"
+      ],
+      "required": false,
+      "aliases": [],
+      "hidden": false
+    }
+  ],
+  "aliases": [
+    "n"
+  ],
+  "scope": "out",
+  "hidden": false
+}

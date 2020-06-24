@@ -1,0 +1,35 @@
+{
+  "index": {
+    "hero": "home",
+    "title": "단 하나의 프레임워크.",
+    "subtitle": "모바일과 데스크탑."
+  },
+
+  "features": {
+    "title": "특징과 장점"
+  },
+
+  "contribute": {
+    "title": "Angular에 공헌하기",
+    "subtitle": "이 프레임워크의 미래를 만들어 나가도록 도와주세요!",
+    "autoformat": "true"
+  },
+
+  "news": {
+    "title": "뉴스"
+  },
+
+  "events": {
+    "title": "이벤트",
+    "subtitle": "우리의 이벤트가 개최될 장소"
+  },
+
+  "support": {
+    "title": "Support",
+    "subtitle": "Get help from the Angular Community"
+  },
+
+  "presskit": {
+    "title": "보도 자료"
+  }
+}

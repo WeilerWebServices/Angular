@@ -1,0 +1,35 @@
+{
+  "index": {
+    "hero": "Accueil",
+    "title": "Une plate-forme.",
+    "subtitle": "Mobile et bureau."
+  },
+
+  "features": {
+    "title": "Nouveautés & Avantages"
+  },
+
+  "contribute": {
+    "title": "Contibuer à Angular",
+    "subtitle": "Aidez-nous à construire l'environnement du futur!",
+    "autoformat": "true"
+  },
+
+  "news": {
+    "title": "Nouveautés"
+  },
+
+  "events": {
+    "title": "Évènements",
+    "subtitle": "Où nous allons présenter"
+  },
+
+  "support": {
+    "title": "Aide",
+    "subtitle": "Obtenez de l'aide de la communauté Angular"
+  },
+
+  "presskit": {
+    "title": "Dossier de presse"
+  }
+}

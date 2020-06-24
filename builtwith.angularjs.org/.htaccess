@@ -1,0 +1,16 @@
+RewriteEngine on
+
+## HTML5 URL Support ##
+RewriteRule ^(project)(/.*)?$    index.html
+
+# content-type mappings
+AddType application/javascript .js
+AddType text/cache-manifest .manifest
+
+# cache stuff for 60 minutes
+ExpiresActive On
+ExpiresDefault "access plus 120 minutes"
+
+# compression
+SetOutputFilter DEFLATE
+Header set Vary "Accept-Encoding"

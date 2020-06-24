@@ -1,0 +1,16 @@
+{
+  "name": "benchpress-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/protractor protractorBenchmarks.conf.js"
+  },
+  "author": "jeffbcross",
+  "license": "Apache 2",
+  "dependencies": {
+    "@angular/benchpress": "^0.1.0",
+    "http-server": "^0.7.5",
+    "protractor": "^4.0.0"
+  }
+}

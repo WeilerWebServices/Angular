@@ -1,0 +1,169 @@
+# This file configures the build at https://circleci.com/gh/alexeagle/angular-bazel-example
+# Complete documentation is at https://circleci.com/docs/2.0/
+
+# CircleCI lets us pick the key for storing one or more caches, to speed up subsequent builds.
+# We can use this to avoid re-fetching our dependencies from npm on every build.
+# To ensure we don't load a stale cache, we invalidate it based on the entries in the key:
+# - the checksum of Yarn's lock file
+# - the branch we are on, which really shouldn't be needed since the yarn lock file should be hermetic
+# - the docker image tag, working around an issue we saw where changing docker images causes permission
+#   errors when restoring the cache, like when the user we run as changes
+var_1: &default_docker_image circleci/node:10.16
+var_2: &cache_key node-0.16-{{ .Branch }}-{{ checksum "yarn.lock" }}-0.8.0
+
+# Each job will inherit these defaults
+var_3: &job_defaults
+  working_directory: ~/angular-bazel-example
+  docker:
+    - image: *default_docker_image
+
+# After checkout, rebase on top of master, because we want to test the proposed merge of a
+# onto the target branch, not just test what's on the user's fork.
+# Similar to travis behavior, but not quite the same.
+# See https://discuss.circleci.com/t/1662
+var_4: &post_checkout
+  post: git pull --ff-only origin "refs/pull/${CI_PULL_REQUEST//*pull\//}/merge"
+
+var_5: &restore_cache
+  restore_cache:
+    keys:
+      - *cache_key
+
+var_6: &init_environment
+  run:
+    name: Initializing environment
+    command: |
+      sudo apt-get update
+      # Install GTK+ graphical user interface (libgtk-3-0), advanced linux sound architecture (libasound2)
+      # and network security service libraries (libnss3) & X11 Screen Saver extension library (libssx1)
+      # which are dependendies of chrome & needed for karma & protractor headless chrome tests.
+      # This is a very small install with the whole init_environment step taking less than 8 seconds.
+      # TODO(gregmagolan): switch rules_webtesting to use a chrome headless_shell binary which does
+      #                    not depend on any dynamically linked libs
+      sudo apt-get -y install libgtk-3-0 libasound2 libnss3 libxss1
+      # Also install libraries required for firefox
+      sudo apt-get -y install libdbus-glib-1-2
+
+      # Setup /etc/bazel.bazelrc
+      sudo cp .circleci/bazel.rc /etc/bazel.bazelrc
+
+var_7: &yarn_install
+  run:
+    name: Run yarn install
+    command: yarn install
+
+var_8: &init_bazel
+  run:
+    name: Initializing Bazel
+    command: |
+      # Symlink fetched bazel to /usr/local/bin/bazel
+      pathToBazel=$(ls $(realpath ./node_modules/@bazel/bazel-linux_x64)/bazel-*)
+      sudo ln -fs $pathToBazel /usr/local/bin/bazel
+      echo "Bazel version:"
+      bazel version
+
+var_9: &attach_workspace
+  attach_workspace:
+    at: ~/
+
+version: 2
+
+# These jobs will run in parallel, and report separate statuses to GitHub PRs
+jobs:
+  setup:
+    <<: *job_defaults
+    steps:
+      - checkout:
+          <<: *post_checkout
+      - *restore_cache
+      - *init_environment
+      - *yarn_install
+      - *init_bazel
+
+      # Save all node_modules to the cache
+      - save_cache:
+          key: *cache_key
+          paths:
+            - "node_modules"
+
+      # Persist any changes at this point to be reused by further jobs.
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./angular-bazel-example
+
+  lint:
+    <<: *job_defaults
+    steps:
+      - *attach_workspace
+      - *init_environment
+      - *init_bazel
+
+      # Run the Buildifier to check our Bazel rules for format issues.
+      - run: 'yarn bazel:format --mode=check ||
+              (echo "BUILD files not formatted. Please run ''yarn bazel:format --mode=fix''" ; exit 1)'
+
+      # Run the Buildifier to check our Bazel rules for lint issues.
+      # Note: The `--lint=warn` will auto fixe (re-write) the affected files. 
+      - run: 'yarn bazel:format --lint=warn ||
+              (echo "BUILD files contain unresolved lint errors. Please fix manually the remaining errors." ; exit 1)'
+
+  build_and_test:
+    <<: *job_defaults
+    resource_class: xlarge
+    steps:
+      - *attach_workspace
+      - *init_environment
+      - *init_bazel
+
+      # Build and Test
+      - run: yarn ng test
+      - run: yarn ng e2e
+
+      # Also run prodserver test which is not covered by `ng e2e`
+      - run: bazel test //e2e:prodserver_test
+
+      - store_artifacts:
+          path: dist/bin/src/bundle.min.js
+          destination: bundle.min.js
+
+      - store_artifacts:
+          path: dist/bin/src/bundle.cs.min
+          destination: bundle.cs.min
+
+  benchmark:
+    <<: *job_defaults
+    resource_class: xlarge
+    steps:
+      - *attach_workspace
+      - *init_environment
+      - *init_bazel
+
+      # Run `bazel build` first as a temporary workaround to unexpected
+      # benchmark failure when entire build runs withing ibazel-benchmark-runner
+      # ```
+      # Error running Bazel unexpected EOF
+      # [ibazel-benchmark-runner] iBazel process exited unexpectedly 4 null
+      # error Command failed with exit code 1.
+      # ```
+      # TODO(gregmagolan): remove this once issue is resolved
+      - run: bazel build ...
+
+      # Run the benchmark
+      - run: yarn benchmark
+
+
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - setup
+      - lint:
+          requires:
+          - setup
+      - build_and_test:
+          requires:
+          - setup
+      - benchmark:
+          requires:
+          - setup

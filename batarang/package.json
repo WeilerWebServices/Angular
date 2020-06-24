@@ -1,0 +1,46 @@
+{
+  "name": "angularjs-batarang",
+  "version": "0.10.9",
+  "description": "chrome extension for inspecting angular apps",
+  "main": "hint.js",
+  "devDependencies": {
+    "angular-mocks": "^1.6.4",
+    "browserify": "^14.1.0",
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.0.0",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-sauce-launcher": "^1.1.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-hint": "https://github.com/angular/angular-hint#v0.3.9",
+    "browserify-eep": "^0.3.1"
+  },
+  "scripts": {
+    "test": "karma start --single-run",
+    "test:watch": "karma start",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/angularjs-batarang.git"
+  },
+  "keywords": [
+    "angular",
+    "angularjs",
+    "chrome",
+    "extension"
+  ],
+  "author": "Brian Ford <btford@umich.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/angularjs-batarang/issues"
+  },
+  "homepage": "https://github.com/angular/angularjs-batarang"
+}
