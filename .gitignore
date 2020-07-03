@@ -3,23 +3,18 @@
 ..
 *~
 */
-bin
-~$*
 *.o
 var
 ._*
 *.d
-x86/
 var/
 env*
 .env
 *.mo
 env/
-x64/
 eggs
 $tf/
 .vs/
-JSON
 app/
 obj/
 /tmp
@@ -27,7 +22,6 @@ obj/
 *.so
 .tmp
 lib/
-*.db
 dist
 bld/
 csx/
@@ -38,7 +32,6 @@ _obj
 core
 *.aps
 .venv
-*.dll
 .tox/
 *.cab
 dist/
@@ -52,7 +45,6 @@ venv/
 .nox/
 *.cer
 eggs/
-Icon?
 *.log
 *.lnk
 *.ilk
@@ -172,7 +164,6 @@ MANIFEST
 .coverage
 *.gpState
 [Dd]ebug/
-!.gitkeep
 venv.bak/
 *.py[cod]
 instance/
@@ -184,7 +175,6 @@ Thumbs.db
 /src/*.*/
 dlldata.c
 *.sage.py
-db.sqlite3
 *.dotCover
 *.rdl.data
 artifacts/
@@ -210,7 +200,6 @@ _Chutzpah*
 .coverage.*
 *.egg-info/
 *.userprefs
-!.gitignore
 /.changelog
 *.[Cc]achee
 *.a[56789o]
@@ -225,7 +214,6 @@ order_*.pdf
 *.cachefile
 .sass-cache
 .LSOverride
-pip-log.txt
 Desktop.ini
 staticfiles
 develop-eggs
@@ -277,7 +265,6 @@ AutoTest.Net/
 .spyderproject
 /test/pass.out
 *.userosscache
-!/env/.gitkeep
 .pytest_cache/
 /goinstall.log
 lerna-debug.log
@@ -289,7 +276,6 @@ Temporary Items
 .TemporaryItems
 .Spotlight-V100
 UpgradeLog*.XML
-!/venv/.gitkeep
 *.sln.docstates
 [Dd]ebugPublic/
 Generated_Code/
@@ -393,7 +379,6 @@ PowerEditor/bin/session.xml
 PowerEditor/installer/build/
 PowerEditor/bin/SciLexer.dll
 assets/vendor/clipboard/test
-!uploads/complaints/.gitkeep
 scintilla/win32/ScintRes.res
 PowerEditor/bin/shortcuts.xml
 pip-delete-this-directory.txt
